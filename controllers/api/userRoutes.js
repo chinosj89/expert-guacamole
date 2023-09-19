@@ -1,11 +1,9 @@
-// DASHBOARD
+// USER authentication
 const router = require('express').Router();
-const { User, Projects } = require('../../models')
+const { User } = require('../../models')
 
 //login, logout, GET Method all USER projects; also a sign up
-// Homepage function: GET all user projects, logout, go to dashboard
-// POST, PUT, DELETE methods
-// Creating a new project, being able to update the content, and deleting the project
+
 // CREATE new user
 router.post('/', async (req, res) => {
     try {

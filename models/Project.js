@@ -11,12 +11,16 @@ Project.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [1, 30],
+      },
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,

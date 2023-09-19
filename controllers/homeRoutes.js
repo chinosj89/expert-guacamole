@@ -1,8 +1,7 @@
-//HOMEPAGE
+//HOMEPAGE route
 const router = require('express').Router();
 const { User, Projects } = require('../../models')
 
-// GET all projects include users
 
 // Login route
 router.get('/login', (req, res) => {
@@ -14,6 +13,7 @@ router.get('/login', (req, res) => {
     // Otherwise, render the 'login' template
     res.render('login');
 });
+
 
 // Homepage will have all user's projects
 router.get('/', async (req, res) => {
