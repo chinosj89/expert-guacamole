@@ -32,7 +32,7 @@ router.get('/', /*withAuth,*/ async (req, res) => {
 });
 
 // POST new projects
-router.post('/create', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const newUserProject = await Project.create({
             title: req.body.title,
@@ -47,7 +47,7 @@ router.post('/create', async (req, res) => {
 });
 
 // PUT method to edit projects
-router.put('/update/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const updatedUserProject = await UserProject.update(
             {
@@ -69,7 +69,7 @@ router.put('/update/:id', async (req, res) => {
 });
 
 // DELETE method to delete projects
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const deletedUserProject = await UserProject.destroy({
             where: {
