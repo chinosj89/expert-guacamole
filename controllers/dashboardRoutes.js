@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const { User, Project } = require('../models');
-// const withAuth = require('../utils/auth');
-const sequelize = require('../config/config');
+const withAuth = require('../utils/auth');
+const sequelize = require('../config/connection')
 
 // GET all user projects
 
-router.get('/', /*withAuth,*/ async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const dbProjectData = await Project.findAll({
             attributes: ['title', 'description'],

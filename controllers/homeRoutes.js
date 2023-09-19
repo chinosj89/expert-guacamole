@@ -1,6 +1,6 @@
 //HOMEPAGE route
 const router = require('express').Router();
-const { User, Projects } = require('../../models')
+const { User, Project } = require('../models')
 
 
 // Login route
@@ -18,7 +18,7 @@ router.get('/login', (req, res) => {
 // Homepage will have all user's projects
 router.get('/', async (req, res) => {
     try {
-        const projectsData = await Projects.findAll({
+        const projectsData = await Project.findAll({
             include: [
                 {
                     model: User,
@@ -41,3 +41,5 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+module.exports = router;

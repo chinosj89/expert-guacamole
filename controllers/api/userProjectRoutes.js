@@ -3,12 +3,14 @@
 // Creating a new project, being able to update the content, and deleting the project
 const router = require('express').Router();
 const { Project } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 //Create new project
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const newProject = await Project.create({
-            ...req.body
+            ...req.body,
+            user_id: req.session.user_id,
         });
 
         res.status(201).json(newProject);
@@ -20,7 +22,7 @@ router.post('/', async (req, res) => {
 });
 
 // Edit project
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
         const projectData = await Project.findByPk(req.params.id);
         if (!projectData) {
@@ -35,7 +37,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete project
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     // delete a category by its `id` value
     try {
         const projectData = await Project.destroy({
@@ -54,3 +56,5 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+module.exports = router;
