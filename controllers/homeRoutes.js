@@ -1,7 +1,7 @@
 //HOMEPAGE route
 const router = require('express').Router();
-const { User, Project } = require('../models')
-
+const { User, Project } = require('../models');
+const sequelize = require('../config/connection');
 
 // Login route
 router.get('/login', (req, res) => {
