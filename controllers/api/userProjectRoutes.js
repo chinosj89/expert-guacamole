@@ -5,6 +5,32 @@ const router = require('express').Router();
 const { Project } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+router.get('/', withAuth, async (req, res) => {
+    try {
+        const dbProjectData = await Project.findAll({
+            attributes: ['title', 'description'],
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+            ],
+        });
+
+        const projects = dbProjectData.map((project) =>
+            project.get({ plain: true })
+        );
+
+        res.render('dashboard', {
+            projects,
+            loggedIn: true,
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
 //Create new project
 router.post('/', withAuth, async (req, res) => {
     try {
