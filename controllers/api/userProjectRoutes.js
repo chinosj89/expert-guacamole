@@ -13,11 +13,9 @@ router.post('/', withAuth, async (req, res) => {
             user_id: req.session.user_id,
         });
 
-        res.status(201).json(newProject);
+        res.status(200).json(newProject);
     } catch (err) {
-        // Handle any errors that occur during project creation
-        console.error(err);
-        res.status(500).json({ message: 'Server error' });
+        res.status(400).json(err);
     }
 });
 
@@ -38,16 +36,16 @@ router.put('/:id', withAuth, async (req, res) => {
 
 // Delete project
 router.delete('/:id', withAuth, async (req, res) => {
-    // delete a category by its `id` value
     try {
         const projectData = await Project.destroy({
             where: {
-                id: req.params.id
+                id: req.params.id,
+                user_id: req.session.user_id,
             },
         });
 
-        if (!categoryData) {
-            res.status(404).json({ message: 'No project found with the provided ID' });
+        if (!projectData) {
+            res.status(404).json({ message: 'No project found with this id!' });
             return;
         }
 
