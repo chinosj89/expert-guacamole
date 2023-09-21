@@ -1,6 +1,7 @@
 module.exports = {
+
     format_date: (date) => {
-        if (!date) return ''; // Handle null or undefined date
-        return date.toLocaleDateString();
+        return `${new Date(date).getMonth()}/${new Date(date).getDate()}/${new Date(date).getFullYear()
+            }`;
     },
 };
