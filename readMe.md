@@ -7,6 +7,9 @@
   ## Description
   This project is to challenge us to create a full-stack website. We are to create both the front-end and back-end for this application
   <!-- Add a screenshot of your application here -->
+
+  ## Deployed Site: 
+  https://lit-castle-15830-1deec82cb2c6.herokuapp.com/
   ## Table of Contents
   - [Installation](#installation)
   - [Usage](#usage)
