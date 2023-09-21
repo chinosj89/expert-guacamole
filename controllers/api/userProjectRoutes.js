@@ -26,7 +26,11 @@ router.put('/:id', withAuth, async (req, res) => {
         if (!projectData) {
             return res.status(404).json({ message: 'No project found with the provided ID' });
         }
-        await Projectroject.update(req.body);
+        await Project.update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        });
         res.status(200).json(projectData);
     } catch (err) {
         console.error(err);
