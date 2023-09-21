@@ -2,5 +2,9 @@
   {
     "title": "Sample name",
     "description": "Test description"
+  },
+  {
+    "title": "Sample name 2",
+    "description": "Test description 2"
   }
 ]
