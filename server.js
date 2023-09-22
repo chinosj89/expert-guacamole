@@ -48,4 +48,3 @@ sequelize.sync({ force: false }).then(() => {
     });
 });
 
-//changed Procfile
